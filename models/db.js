@@ -1,11 +1,12 @@
-let users = ["Max"];
+const pool = require("./pool");
 
-function getAllUsers() {
-  return users;
+async function getAllUsers() {
+  const { rows } = await pool.query("SELECT * FROM usernames;");
+  return rows;
 }
 
-function createUser(name) {
-  users.push(name);
+async function createUser(username) {
+  await pool.query("INSERT INTO usernames (username) VALUES  ($1)", [username]);
 }
 
 module.exports = {

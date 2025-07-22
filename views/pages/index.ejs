@@ -1,8 +1,9 @@
 <% if(showForm) { %>
   <a href="/">Close</a>
-  <%- include("../partials/form.ejs") %>
+  <%- include("../partials/createForm.ejs") %>
 <% } else { %>
   <a href="/new">New User</a>
+  <%- include("../partials/searchForm.ejs") %>
 <% } %>
 
 <% users.forEach((user) => { %>
