@@ -1,3 +1,10 @@
+<% if(showForm) { %>
+  <a href="/">Close</a>
+  <%- include("../partials/form.ejs") %>
+<% } else { %>
+  <a href="/new">New User</a>
+<% } %>
+
 <% users.forEach((user) => { %>
   <%- include("../partials/user.ejs", {user: user}) %>
 <% }); %>
