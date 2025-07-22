@@ -10,7 +10,18 @@ async function showForm(req, res) {
   res.render("pages/index", { users: users, showForm: true });
 }
 
+async function addNewUser(req, res) {
+  const newUser = req.body.name;
+  if (newUser != null && newUser != "") {
+    db.createUser(newUser);
+    res.redirect("/");
+  } else {
+    res.render("pages/index", { users: users, showForm: true });
+  }
+}
+
 module.exports = {
   getAllUsers,
   showForm,
+  addNewUser,
 };

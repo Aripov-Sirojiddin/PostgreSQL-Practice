@@ -11,6 +11,7 @@ const assetsPath = path.join(__dirname, "public");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(assetsPath));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(expressLayouts);
 app.set("layout", "layout");
