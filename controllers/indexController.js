@@ -25,7 +25,8 @@ async function addNewUser(req, res) {
 async function deleteUser(req, res) {
   const { userId } = req.params;
   console.log(userId);
-  res.redirect("/")
+  await db.deleteUser(userId);
+  res.redirect("/");
 }
 
 module.exports = {
