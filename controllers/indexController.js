@@ -1,7 +1,8 @@
 const db = require("../models/db.js");
 
 async function getAllUsers(req, res) {
-  const users = await db.getAllUsers();
+  const { search } = req.query;
+  const users = search != null ? await db.getFilteredUsers(search) : await db.getAllUsers();
   res.render("pages/index", { users: users, showForm: false });
 }
 

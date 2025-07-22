@@ -9,7 +9,16 @@ async function createUser(username) {
   await pool.query("INSERT INTO usernames (username) VALUES  ($1)", [username]);
 }
 
+async function getFilteredUsers(filter) {
+  const { rows } = await pool.query(
+    "SELECT * FROM usernames WHERE username LIKE $1;",
+    [`%${filter}%`]
+  );
+  return rows;
+}
+
 module.exports = {
   getAllUsers,
   createUser,
+  getFilteredUsers,
 };
