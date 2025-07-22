@@ -11,7 +11,7 @@ async function createUser(username) {
 
 async function getFilteredUsers(filter) {
   const { rows } = await pool.query(
-    "SELECT * FROM usernames WHERE username LIKE $1;",
+    "SELECT * FROM usernames WHERE username ILIKE $1;",
     [`%${filter}%`]
   );
   return rows;
