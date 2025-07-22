@@ -2,7 +2,8 @@ const db = require("../models/db.js");
 
 async function getAllUsers(req, res) {
   const { search } = req.query;
-  const users = search != null ? await db.getFilteredUsers(search) : await db.getAllUsers();
+  const users =
+    search != null ? await db.getFilteredUsers(search) : await db.getAllUsers();
   res.render("pages/index", { users: users, showForm: false });
 }
 
@@ -21,8 +22,15 @@ async function addNewUser(req, res) {
   }
 }
 
+async function deleteUser(req, res) {
+  const { userId } = req.params;
+  console.log(userId);
+  res.redirect("/")
+}
+
 module.exports = {
   getAllUsers,
   showForm,
   addNewUser,
+  deleteUser,
 };
